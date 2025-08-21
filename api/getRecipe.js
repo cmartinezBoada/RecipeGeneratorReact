@@ -13,16 +13,17 @@ export default async function handler(req, res) {
 	const { ingredients } = req.body;
 
 	const SYSTEM_PROMPT = `
-	  You are an assistant that receives a list of ingredients that a user has and suggests a recipe.
-	  Provide only the final recipe, concise and ready to display. 
-	  Do NOT include reasoning, options, or intermediate thoughts.
+	  You are a helpful cooking assistant. 
+	  Your task is to provide **only a recipe** using the ingredients provided. 
+	  Do NOT include reasoning, internal thoughts, options, or explanations. 
+	  Return the recipe as plain text ready to show to the user.
 	`;
 
 	const response = await hf.chatCompletion({
 	  model: "HuggingFaceTB/SmolLM3-3B",
 	  messages: [
 		{ role: "system", content: SYSTEM_PROMPT },
-		{ role: "user", content: `I have ${ingredients.join(", ")}. Give me a recipe using only these ingredients.` },
+		{ role: "user", content: `I have ${ingredients.join(", ")}. Give me only a recipe using these ingredients.` },
 	  ],
 	  max_tokens: 512,
 	});

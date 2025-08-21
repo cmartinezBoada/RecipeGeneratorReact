@@ -2,7 +2,7 @@ import React from "react"
 import ReactMarkdown from "react-markdown"
 import IngredientsList from "./IngredientsList"
 import ClaudeRecipe from "./ClaudeRecipe"
-import {getRecipeFromMistral} from "../ai" // You're importing a named export, not a default export, that's why {}
+import {getRecipeFromServer} from "../ai" // You're importing a named export, not a default export, that's why {}
 
 export default function MainElement() {
 	const [ingredients, setIngredients] = React.useState([]);

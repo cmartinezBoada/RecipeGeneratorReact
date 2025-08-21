@@ -27,7 +27,7 @@ export default function MainElement() {
 
 	async function getRecipe(){      //We use async because it is a promise
 	
-			const result = await getRecipeFromMistral(ingredients)
+			const result = await getRecipeFromServer(ingredients)
 			setRecipe(result)
 		
 	}

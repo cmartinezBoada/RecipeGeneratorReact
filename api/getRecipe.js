@@ -13,10 +13,12 @@ export default async function handler(req, res) {
 	const { ingredients } = req.body;
 
 	const SYSTEM_PROMPT = `
-	  You are a helpful cooking assistant. 
-	  Your task is to provide **only a recipe** using the ingredients provided. 
-	  Do NOT include reasoning, internal thoughts, options, or explanations. 
-	  Return the recipe as plain text ready to show to the user.
+	  You are an assistant that receives a list of ingredients a user has and suggests a recipe.
+	  Do NOT include any internal thoughts.
+	  Give a complete recipe with:
+	  
+	  - Ingredients list
+	  - Step-by-step instructions
 	`;
 
 	const response = await hf.chatCompletion({
@@ -25,7 +27,7 @@ export default async function handler(req, res) {
 		{ role: "system", content: SYSTEM_PROMPT },
 		{ role: "user", content: `I have ${ingredients.join(", ")}. Give me only a recipe using these ingredients.` },
 	  ],
-	  max_tokens: 512,
+	  max_tokens: 1024,
 	});
 
 	// Extraer solo el contenido final

@@ -1,54 +1,50 @@
-# React + TypeScript + Vite
+# 🍳 AI Recipe Generator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a simple **AI-powered recipe generator** where users can enter ingredients and receive a recipe suggestion.  
+It is built with **React**, deployed on **Vercel**, and integrates with an AI API to generate cooking ideas.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Live Demo
+👉 [View on Vercel](https://recipe-generator-react-nu.vercel.app))  
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 📌 Features
+- Add ingredients one by one.  
+- Button to generate a recipe appears once **4 ingredients** are added.  
+- AI suggests a recipe based on the provided ingredients.  
+- Smooth scrolling to the recipe section.  
+- Fully deployed on **Vercel** with GitHub integration.  
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🛠️ Tech Stack
+- **Frontend:** React, Vite  
+- **Styling:** CSS  
+- **Deployment:** Vercel (CI/CD from GitHub)  
+- **AI Integration:** API call (HuggingFace AI model)  
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## ⚙️ Setup & Installation
+
+1. Clone the repo:
+   ```bash
+   git clone [https://github.com/cmartinezBoada/RecipeGeneratorReact.git]
+   cd recipe-generator
+
+This project uses an API key stored in a `.env` file.  
+Since the key is private, local testing is not available by default.  
+
+If you want to run it locally, you would need to:  
+1. Create a `.env` file in the root directory.  
+2. Add your own API key, for example:  
+
+VITE_API_KEY=your_api_key_here
+
+3. Run the development server:  
+
+```bash
+npm install
+npm run dev

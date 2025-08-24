@@ -20,10 +20,20 @@ export default function MainElement() {
 			})
 		}
 	}, [recipe])
+	//Check first the ingredient is not empty and then that is not like the old ingredients
 	function addIngredient(formData) {
-		const newIngredient = formData.get("ingredient")
-		setIngredients(prevIngredients => [...prevIngredients, newIngredient])	 
+	  const raw = formData.get("ingredient");
+	  const newIngredient = (typeof raw === "string" ? raw : "").trim();
+	
+	  if (!newIngredient) return;
+	
+	  setIngredients(prev =>
+		prev.some(i => i.toLowerCase() === newIngredient.toLowerCase())
+		  ? prev
+		  : [...prev, newIngredient]
+	  );
 	}
+
 
 	async function getRecipe(){      //We use async because it is a promise
 	
